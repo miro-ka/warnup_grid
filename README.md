@@ -1,7 +1,13 @@
+<p align="center">
+<img src="https://github.com/mkarpis/warnup_grid/blob/master/docs/images/icon.png" width="128">
+</p>
+
+
 [![Build Status](https://travis-ci.org/mkarpis/warnup_grid.svg?branch=master)](https://travis-ci.org/mkarpis/warnup_grid)
 
 
-# warnup_grid
+# Welcome to Warnup's open soucre crime monitoring network!
+
 
 ## About ##
 
@@ -9,7 +15,7 @@ Warnup Grid is a Smart Notification Network, that primarily helps to monitor cri
 
 
 Main idea behind Warnup is to:
-* Increase the chance of avoiding a crime for anybody and for free.
+* Increase the chance of avoiding a crime **for anybody and for free**.
 * Try to predict a crime.
 * Monitory crime activity and run specific analysis on top of its data.
 
