@@ -1,2 +1,0 @@
-# warnup
-Smart Notification Network
