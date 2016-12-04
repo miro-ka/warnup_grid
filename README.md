@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/mkarpis/warnup_grid.svg?branch=master)](https://travis-ci.org/mkarpis/warnup_grid)
+
+
 # warnup_grid
 
 ## About ##
