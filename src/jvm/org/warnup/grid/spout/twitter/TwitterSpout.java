@@ -16,18 +16,27 @@ import java.util.Map;
 import java.util.Random;
 
 
+
 public class TwitterSpout extends BaseRichSpout {
-    public static Logger LOG = LoggerFactory.getLogger(TwitterSpout.class);
+
+    public static Logger log = LoggerFactory.getLogger(TwitterSpout.class);
+    private Credentials credentials;
+
     boolean _isDistributed;
     SpoutOutputCollector _collector;
 
-    public TwitterSpout() {
-        this(true);
+    public TwitterSpout(final Credentials credentials) {
+        this(true, credentials);
+        this.credentials = credentials;
     }
 
-    public TwitterSpout(boolean isDistributed) {
+
+    public TwitterSpout(final boolean isDistributed, final Credentials credentials) {
         this._isDistributed = isDistributed;
+        this.credentials = credentials;
     }
+
+
 
     public void open(Map conf, TopologyContext context, SpoutOutputCollector collector) {
         this._collector = collector;
