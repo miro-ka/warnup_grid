@@ -39,7 +39,7 @@
             <!--
               Use "provided" scope to keep storm out of the jar-with-dependencies
               For IntelliJ dev, intellij will load properly.
-            -->
+              -->
             <scope>${provided.scope}</scope>
         </dependency>
         <dependency>
@@ -60,14 +60,48 @@
             <version>3.2.1</version>
         </dependency>
         <dependency>
+            <groupId>org.xerial</groupId>
+            <artifactId>sqlite-jdbc</artifactId>
+            <version>3.15.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>19.0</version>
+        </dependency>
+        <dependency>
+            <groupId>biz.paluch.redis</groupId>
+            <artifactId>lettuce</artifactId>
+            <version>3.1.Final</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.apache.storm</groupId>
             <artifactId>storm-metrics</artifactId>
             <version>${project.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.twitter4j</groupId>
+            <artifactId>twitter4j-core</artifactId>
+            <version>4.0.6</version>
+        </dependency>
+        <dependency>
+            <groupId>org.twitter4j</groupId>
+            <artifactId>twitter4j-stream</artifactId>
+            <version>4.0.6</version>
+        </dependency>
+
     </dependencies>
 
     <build>
         <sourceDirectory>src/jvm</sourceDirectory>
+
+        <resources>
+            <resource>
+                <directory>src/resources</directory>
+            </resource>
+        </resources>
 
         <plugins>
             <plugin>
