@@ -11,17 +11,17 @@
 
 ## About ##
 
-Warnup Grid is a Smart Notification Network, that primarily helps to monitor crime events detected from social media and network activities. Detected crime events and crime predictions will be forwarded to assigned users, that can specify area/location that want to monitor.
+Warnup Grid is a Smart Notification Network, that primarily should help to monitor, detect and predict crime events. 
 
-
-Main idea behind Warnup is to:
-* Increase the chance of avoiding a crime **for anybody and for free**.
-* Try to predict a crime.
-* Monitory crime activity and run specific analysis on top of its data.
+Platform where the data should be visualized will be open and free for everyone. Main goal behind this project is to at least try to avoid crime, or notify other fellow citizens about crime that you have observer or encountered. 
 
 
 
 ## Install ##
+
+### Requirements ###
+* [Heron](http://twitter.github.io/heron/): A realtime, distributed, fault-tolerant stream processing engine from Twitter
+  * Installation instructions can be found at Heron [page](http://twitter.github.io/heron/docs/getting-started/).
 
 ```
 todo
