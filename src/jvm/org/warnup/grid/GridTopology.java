@@ -17,6 +17,7 @@ public class GridTopology {
 
     public static void main(String[] args) throws Exception {
 
+
         TopologyBuilder builder = new TopologyBuilder();
 
         // Load config properties

@@ -1,21 +1,45 @@
 package org.warnup.grid.tools;
 
-import org.sqlite.SQLiteConfig;
-import org.sqlite.SQLiteOpenMode;
+
 import java.sql.*;
+import java.util.Properties;
 
 
 public class DBWriter {
 
-    private Connection connect() {
-        String dbURL = "jdbc:sqlite:/vagrant/tweets/db/tweets.db";
-        SQLiteConfig config = new SQLiteConfig();
-        config.resetOpenMode(SQLiteOpenMode.CREATE); // this disable creation
-        Connection conn = null;
+    private static String dbUrl, dbUser, dbPassword;
+    Connection conn;
+
+
+    public DBWriter() throws Exception{
 
         try {
-            Class.forName("org.sqlite.JDBC");
-            conn = DriverManager.getConnection(dbURL, config.toProperties());
+
+            Properties properties = new Properties();
+            properties.load(DBWriter.class.getResourceAsStream("/config.properties"));
+            dbUrl = properties.getProperty("db.url");
+            dbUser = properties.getProperty("db.user");
+            dbPassword = properties.getProperty("db.password");
+        }catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        conn = this.connect();
+
+    }
+
+
+    private Connection connect() {
+
+        Properties props = new Properties();
+        props.setProperty("user", dbUser);
+        props.setProperty("password", dbPassword);
+        Connection conn = null;
+
+
+        try {
+            Class.forName("org.postgresql.Driver");
+            conn = DriverManager.getConnection(dbUrl, props);
         }
         catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -26,22 +50,21 @@ public class DBWriter {
         return conn;
     }
 
+
     public void insert(long tweet_id, int count) {
-        String sql = "INSERT INTO tweets VALUES ($next_id, ?,?,?,?)";
+        String sql = "INSERT INTO tweets (time, tweet_id, count, type) VALUES (?,?,?,?)";
         long epoch_time = System.currentTimeMillis()/1000;
         int type = 1; //so far default for news
 
         try{
-            Connection conn = this.connect();
             PreparedStatement pstmt = conn.prepareStatement(sql);
-            pstmt.setLong(2, epoch_time);
-            pstmt.setLong(3, tweet_id);
-            pstmt.setInt(4, count);
-            pstmt.setInt(5, type);
+            pstmt.setLong(1, epoch_time);
+            pstmt.setLong(2, tweet_id);
+            pstmt.setInt(3, count);
+            pstmt.setInt(4, type);
             pstmt.executeUpdate();
 
         } catch (SQLException e) {
-            System.out.println("got the freaking errror");
             System.out.println(e.getMessage());
         }
     }
